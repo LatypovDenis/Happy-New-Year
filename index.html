@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, inita;-scale=1.0">
+    <title>С новый годом друзья</title>
+    <style>
+        .head-h1{
+            font-size: 48px;
+            color: rgb(196, 17, 17);
+            text-align: center;
+        }
+        .head-p{
+            font-size: 24px;
+            color: rgb(181, 181, 181);
+            text-align: center;
+        }
+        html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('bg.jpg');
+            background-size: 100% 100%;
+        }
+
+        #scaryButton {
+            padding: 20px 40px;
+            font-size: 24px;
+            border-radius: 10px;
+            background: linear-gradient(to right, #f0c, #33f, #0fc);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            animation: glowing 1500ms infinite;
+            margin: 20px;
+        }
+        @keyframes glowing {
+            0% {box-shadow: 0 0 5px #f0c;}
+            50% {box-shadow: 0 0 20px #33f;}
+            100% {box-shadow: 0 0 5px #0fc;}
+        }
+        #fullScreen Image {
+            width: 80%;
+            height: 80;
+            object-fit: cover;
+            position: fixed;
+            top: 10%;
+            left: 10%;
+            z-index: 9999;
+            display: none;
+        }
+        @keyframes scaleImage {
+            0% {transform: scale(0.3);}
+            100% {transform: scale(3.5);}
+        }
+    </style>
+    <script>
+        function playScary() {
+            var button = document.getElementById('scaryButton');
+            button.style.display = 'none';
+
+            var img = document.createElement('img');
+            img.id = 'fullScreenImage';
+            img.src = 'scary_image.jpg';
+            document.body.appendChild(img);
+            img.style.display = 'block';
+
+            // Apply animations to the image
+            img.style.animation = 'scaleImage 1s forwards';
+
+            var audio = new Audio('audio.mp3');
+            audio.play();
+        }
+    </script>
+</head>
+<body>
+    <button id="scaryButton" onclick="playScary()">Увидеть поздравление</button>
+    <h1 class="head-h1">С новым годом!</h1>
+    <p class="head-p">Приятного празнования друзья!</p>
+</body>
+</html>
